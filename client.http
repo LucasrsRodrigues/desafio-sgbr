@@ -1,0 +1,20 @@
+### Variables 
+@apiurl = https://gorest.co.in/public-api
+
+### POST Login
+POST https://test-api-y04b.onrender.com/signIn
+Content-Type: application/json
+
+{
+  "user": "teste",
+  "password": "123"
+}
+
+
+### GET Listar as marcas:
+GET https://parallelum.com.br/fipe/api/v1/carros/marcas
+Content-Type: application/json
+
+### Método para listar os modelos da marca escolhida:
+GET https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos
+Content-Type: application/json
