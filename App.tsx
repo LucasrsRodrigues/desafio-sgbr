@@ -1,27 +1,43 @@
-import { Home } from '@screens/Home';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { useThemeSwitcher } from 'src/hooks/useThemeSwitcher';
-import { ThemeProvider } from 'styled-components';
+import { StyleSheet, View } from 'react-native';
+import { Urbanist_400Regular, Urbanist_500Medium, Urbanist_600SemiBold, Urbanist_700Bold, useFonts } from '@expo-google-fonts/urbanist';
+import { SignIn } from '@screens/SignIn';
+import { useThemeSwitcher } from '@hooks/useThemeSwitcher';
+import { ThemeProvider } from 'styled-components/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ToastProvider } from '@hooks/useToast';
 
 export default function App() {
   const { theme } = useThemeSwitcher();
 
+  const [loaded, error] = useFonts({
+    Urbanist_700Bold,
+    Urbanist_600SemiBold,
+    Urbanist_500Medium,
+    Urbanist_400Regular
+  });
+
+
+  if (!loaded && !error) {
+    return null;
+  }
+
+
   return (
-    <ThemeProvider theme={theme}>
-      <View style={styles.container}>
-        <Home />
-      </View>
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <ToastProvider>
+          <View style={styles.container}>
+            <SignIn />
+          </View>
+        </ToastProvider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

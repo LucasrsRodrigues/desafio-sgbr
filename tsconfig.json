@@ -5,18 +5,48 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@screens/*": [
-        "src/screens/*"
+      "@dtos/*": [
+        "./src/dtos/*"
       ],
       "@assets/*": [
-        "src/assets/*"
+        "./src/assets/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@screens/*": [
+        "./src/screens/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@routes/*": [
+        "./src/routes/*"
       ],
       "@global/*": [
-        "src/global/*"
+        "./src/global/*"
       ],
-    }
-  }
+      "@infrastructure/*": [
+        "./src/infrastructure/*"
+      ],
+      "@backend/*": [
+        "./src/backend/*"
+      ],
+      "@data/*": [
+        "./src/data/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
+      "@stores/*": [
+        "./src/stores/*"
+      ],
+    },
+  },
 }

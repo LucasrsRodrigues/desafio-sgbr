@@ -1,4 +1,4 @@
-package com.sgbcar
+package com.lucasrs.SGBCar
 
 import android.app.Application
 import android.content.res.Configuration

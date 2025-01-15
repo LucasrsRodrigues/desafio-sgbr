@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
-import { darkTheme, lightTheme } from '@global/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import lightTheme from '@global/styles/light.theme';
+import darkTheme from '@global/styles/dark.theme';
 
-const THEME_KEY = 'app_theme';
+const THEME_KEY = '@sgbcar:theme';
 
 export const useThemeSwitcher = () => {
   const [theme, setTheme] = useState(lightTheme);
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+  // 
   useEffect(() => {
     const loadTheme = async () => {
       const savedTheme = await AsyncStorage.getItem(THEME_KEY);
+
       if (savedTheme === 'dark') {
         setTheme(darkTheme);
         setIsDarkMode(true);

@@ -1,4 +1,4 @@
-package com.sgbcar
+package com.lucasrs.SGBCar
 
 import android.os.Build
 import android.os.Bundle
