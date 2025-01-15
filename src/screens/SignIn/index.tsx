@@ -2,44 +2,24 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Box, Input, VStack } from '@components/base';
+import { Box, VStack } from '@components/base';
 import { Heading } from '@components/base/Typography/Heading';
 import { Button } from '@components/base/Button';
 
-import * as Yup from "yup";
-import UserHTTPService from '@services/infraestructure/service/UserHTTPService';
 import { ControlledInput } from '@components/ControlledInput';
-import { useToast } from '@hooks/useToast';
-
-const schema = Yup.object().shape({
-  user: Yup.string().required("Username é obrigatório"),
-  password: Yup.string().required('Senha é obrigatória'),
-});
-
-type FormData = Yup.InferType<typeof schema>;
+import { useAuth } from '@hooks/auth';
+import { loginSchema } from '@global/schemas/login.schema';
 
 export function SignIn() {
-  const { showToast } = useToast();
+  const { login } = useAuth();
 
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(loginSchema)
   })
-
-  async function handleLogin(data: FormData) {
-    try {
-      const response = await UserHTTPService.login(data);
-
-      console.log("===> LOGIN");
-      console.log(response.data)
-      console.log("===> LOGIN");
-    } catch (error) {
-      showToast(error?.response?.data?.message);
-    }
-  }
 
   return (
     <Box padding={24} topSafe>
@@ -66,7 +46,7 @@ export function SignIn() {
         />
 
         <Button
-          onPress={handleSubmit(handleLogin)}
+          onPress={handleSubmit(login)}
           isLoading={isSubmitting}
         >
           Sign in

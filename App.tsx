@@ -6,6 +6,7 @@ import { useThemeSwitcher } from '@hooks/useThemeSwitcher';
 import { ThemeProvider } from 'styled-components/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ToastProvider } from '@hooks/useToast';
+import { AuthProvider } from '@hooks/auth';
 
 export default function App() {
   const { theme } = useThemeSwitcher();
@@ -27,9 +28,11 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <ToastProvider>
-          <View style={styles.container}>
-            <SignIn />
-          </View>
+          <AuthProvider>
+            <View style={styles.container}>
+              <SignIn />
+            </View>
+          </AuthProvider>
         </ToastProvider>
       </ThemeProvider>
     </SafeAreaProvider>

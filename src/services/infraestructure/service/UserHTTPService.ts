@@ -5,12 +5,21 @@ type ILoginDTO = {
   password: string;
 };
 
+type ILoginResponse = {
+  error: boolean;
+  user: {
+    id: number;
+    name: string;
+    token: string;
+  }
+}
+
 interface IUserHTTPService {
-  login: (data: ILoginDTO) => Promise<AxiosResponse>;
+  login: (data: ILoginDTO) => Promise<AxiosResponse<ILoginResponse>>;
 }
 
 const UserHTTPService: IUserHTTPService = {
-  login: async function (data: ILoginDTO): Promise<AxiosResponse> {
+  login: async function (data: ILoginDTO): Promise<AxiosResponse<ILoginResponse>> {
     console.log("===> UserHTTPService");
     console.log(data)
     console.log("===> UserHTTPService");
