@@ -20,10 +20,6 @@ interface IUserHTTPService {
 
 const UserHTTPService: IUserHTTPService = {
   login: async function (data: ILoginDTO): Promise<AxiosResponse<ILoginResponse>> {
-    console.log("===> UserHTTPService");
-    console.log(data)
-    console.log("===> UserHTTPService");
-
     return await axios.post("https://test-api-y04b.onrender.com/signIn", data, {
       headers: {
         "Content-Type": "application/json",

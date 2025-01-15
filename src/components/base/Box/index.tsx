@@ -1,7 +1,7 @@
 import React from "react";
-import * as S from "./styles";
-import type { IBoxProps } from "./box";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import type { IBoxProps } from "./box";
+import * as S from "./styles";
 
 export function Box({
 	children,

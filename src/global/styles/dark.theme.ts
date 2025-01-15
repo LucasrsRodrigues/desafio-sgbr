@@ -14,5 +14,6 @@ export default {
   },
   typography: {
     ...typography
-  }
+  },
+  shimmer: ['rgba(40, 40, 40, 0.0)', 'rgba(60, 60, 60, 0.5)', 'rgba(40, 40, 40, 0.0)',]
 }

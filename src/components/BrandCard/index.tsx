@@ -1,26 +1,23 @@
-import { Text } from '@components/base';
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import Animated, {
+import { TouchableOpacityProps, ViewToken } from 'react-native';
+import {
+  SharedValue,
   useAnimatedStyle,
   withTiming,
   WithTimingConfig,
 } from 'react-native-reanimated';
+
+import { Text } from '@components/base';
+
 import * as S from "./styles";
 
-// Define a nova interface do item
 interface Item {
   codigo: string;
   nome: string;
 }
 
-interface ViewableItem {
-  isViewable: boolean;
-  item: Item;
-}
-
-interface ListItemProps {
-  viewableItems: Animated.SharedValue<ViewableItem[]>;
+interface BrandCardProps extends TouchableOpacityProps {
+  viewableItems: SharedValue<ViewToken<any>[]>
   item: Item;
 }
 
@@ -28,8 +25,8 @@ const animationConfig: WithTimingConfig = {
   duration: 300,
 };
 
-export const BrandCard: React.FC<ListItemProps> = React.memo(
-  ({ item, viewableItems }) => {
+export const BrandCard: React.FC<BrandCardProps> = React.memo(
+  ({ item, viewableItems, ...rest }) => {
     const rStyle = useAnimatedStyle(() => {
       const isVisible = viewableItems.value
         .filter(viewableItem => viewableItem.isViewable)
@@ -47,6 +44,7 @@ export const BrandCard: React.FC<ListItemProps> = React.memo(
       <S.BrandContainer
         style={rStyle}
         testID={`list-item-${item.codigo}`}
+        {...rest}
       >
         <Text
           variant='xlarge'

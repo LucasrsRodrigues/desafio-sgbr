@@ -1,5 +1,4 @@
-import { AxiosPromise } from "axios";
-import fipeApi from "../http/api";
+import axios, { AxiosPromise } from "axios";
 
 type IResponse = {
   nome: string;
@@ -13,10 +12,11 @@ interface IBrandsHttpService {
 
 const BrandsHttpService: IBrandsHttpService = {
   listBrands: async function (): Promise<AxiosPromise<IResponse[]>> {
-    return await fipeApi.get("/carros/marcas");
+    return await axios.get("https://parallelum.com.br/fipe/api/v1/carros/marcas")
   },
   getCars: async function (brandId: string): Promise<AxiosPromise> {
-    return await fipeApi.get(`carros/marcas/${brandId}/modelos`);
+    console.log(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandId}/modelos`)
+    return await axios.get(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandId}/modelos`);
   }
 }
 

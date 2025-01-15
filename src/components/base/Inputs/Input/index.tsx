@@ -1,13 +1,14 @@
 import React, { ReactNode, useState } from 'react';
 import { TextInputProps } from 'react-native';
-
 import { useTheme } from 'styled-components/native';
+
+
 import { Icon } from '@components/base/Icon';
 import { IconName } from '@components/base/Icon/icon';
-
-import * as S from './styles';
 import { VStack } from '@components/base/VStack';
 import { Text } from '@components/base/Typography/Text';
+
+import * as S from './styles';
 
 export interface IInputProps extends TextInputProps {
   icon?: IconName;

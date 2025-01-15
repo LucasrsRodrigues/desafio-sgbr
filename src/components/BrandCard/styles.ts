@@ -1,10 +1,13 @@
+import { TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
 import styled from "styled-components/native";
 
-export const BrandContainer = styled(Animated.View)`
+const TouchableAnimated = Animated.createAnimatedComponent(TouchableOpacity);
+
+export const BrandContainer = styled(TouchableAnimated)`
   height: 80px;
   width: 90%;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.shape};
   align-self: center;
   border-radius: 15px;
   margin-top: 20px;

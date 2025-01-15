@@ -29,7 +29,7 @@ export function SignIn() {
         <ControlledInput
           control={control}
           name='user'
-          icon='message'
+          icon='profile'
           placeholder='Username'
           error={errors.user?.message}
         />

@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 
-import * as S from './styles';
 import IHStackProps from './hstack';
 
+import * as S from './styles';
 
 export function HStack({ children, ...rest }: IHStackProps) {
   return (

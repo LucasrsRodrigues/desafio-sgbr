@@ -17,6 +17,7 @@ interface AuthContextData {
   isAuthenticated: boolean;
   user: IUserDTO;
   login: (data: ILoginDTO) => Promise<void>;
+  logout: () => Promise<void>
 }
 
 
@@ -45,6 +46,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     checkAuthStatus();
   }, []);
 
+  const logout = async () => {
+    try {
+      await AsyncStorage.removeItem('user');
+      setUser({} as IUserDTO);
+      setIsAuthenticated(false);
+    } catch (error) {
+      console.error('Failed to remove user data', error);
+    }
+  }
+
   const login = async (data: ILoginDTO) => {
     try {
       const response = await UserHTTPService.login(data);
@@ -63,7 +74,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

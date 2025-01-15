@@ -22,7 +22,6 @@ const variants = (theme: DefaultTheme, variants = 'medium') => ({
 }[variants]);
 
 export const TextContainer = styled.Text<ITextProps>`
-  ${color};
   ${space};
   ${typography};
   ${layout};
@@ -31,4 +30,7 @@ export const TextContainer = styled.Text<ITextProps>`
   font-family: ${({ theme, weight }) => theme.typography.fontFamily[weight!]};
   text-align: ${({ textAlign }) => textAlign};
   text-transform: ${({ textTransform }) => textTransform};
+  color: ${({ theme }) => theme.colors.text};
+  ${color};
+
 `;

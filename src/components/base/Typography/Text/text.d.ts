@@ -4,9 +4,8 @@ import {
   TypographyProps,
   LayoutProps
 } from 'styled-system';
-import { TextInputProps } from "react-native";
 
-export default interface ITextProps extends TextInputProps, ColorProps,
+export default interface ITextProps extends ColorProps,
   SpaceProps,
   TypographyProps,
   LayoutProps {

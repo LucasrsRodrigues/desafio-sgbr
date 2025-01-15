@@ -1,11 +1,15 @@
 import React from 'react';
 
-import { Box, Heading } from '@components/base';
+import { Box } from '@components/base';
+import { ModelHeader } from './sections/ModelHeader';
+import { ModelsList } from './sections/ModelList';
 
 export function Model() {
   return (
-    <Box flex={1} alignContent='center' justifyContent='center' >
-      <Heading textAlign='center'>Model</Heading>
+    <Box padding={24} topSafe>
+      <ModelHeader />
+
+      <ModelsList />
     </Box>
   );
 }
