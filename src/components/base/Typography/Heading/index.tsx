@@ -5,7 +5,7 @@ import { TextProps } from 'react-native';
 import IRNTextProps, * as S from './styles';
 
 interface IHeadingProps extends TextProps, IRNTextProps {
-  children: string;
+  children: string | string[];
 }
 
 export function Heading({

@@ -2,11 +2,9 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Box, VStack } from '@components/base';
-import { Heading } from '@components/base/Typography/Heading';
-import { Button } from '@components/base/Button';
-
+import { Box, VStack, Heading, Button } from '@components/base';
 import { ControlledInput } from '@components/ControlledInput';
+
 import { useAuth } from '@hooks/auth';
 import { loginSchema } from '@global/schemas/login.schema';
 

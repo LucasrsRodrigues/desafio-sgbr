@@ -1,11 +1,11 @@
 import React from 'react';
 
-import * as S from './styles';
+import { Box, Heading } from '@components/base';
 
 export function Model() {
   return (
-    <S.Container>
-
-    </S.Container>
+    <Box flex={1} alignContent='center' justifyContent='center' >
+      <Heading textAlign='center'>Model</Heading>
+    </Box>
   );
 }

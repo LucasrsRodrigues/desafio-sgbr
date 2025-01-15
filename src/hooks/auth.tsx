@@ -4,12 +4,21 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ILoginDTO } from '@global/schemas/login.schema';
 
 import { useToast } from './useToast';
+import fipeApi from '@services/infraestructure/http/api';
+
+type IUserDTO = {
+  id: number;
+  name: string;
+  token: string;
+}
+
 
 interface AuthContextData {
   isAuthenticated: boolean;
-  user: any;
+  user: IUserDTO;
   login: (data: ILoginDTO) => Promise<void>;
 }
+
 
 const AuthContext = createContext({} as AuthContextData);
 
@@ -17,7 +26,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const { showToast } = useToast();
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<IUserDTO>({} as IUserDTO);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -40,6 +49,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const response = await UserHTTPService.login(data);
       const loggedInUser = response.data.user;
+
+      fipeApi.defaults.headers["Authorization"] =
+        `Bearer ${loggedInUser?.token}`;
 
       setUser(loggedInUser);
       setIsAuthenticated(true);

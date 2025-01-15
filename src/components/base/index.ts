@@ -9,3 +9,5 @@ export * from "./Typography/Text";
 
 export * from "./HStack";
 export * from "./VStack";
+
+export * from "./Button";
